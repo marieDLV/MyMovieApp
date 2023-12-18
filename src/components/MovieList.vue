@@ -8,11 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useMovieStore } from '../stores/movie';
+import { defineProps } from 'vue';
 
-const movieStore = useMovieStore();
-const movies = computed(() => movieStore.movies);
-
-movieStore.fetchMovies();
+const props = defineProps({
+  movies: {
+    type: Array,
+    required: true
+  }
+});
 </script>

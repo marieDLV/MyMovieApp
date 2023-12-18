@@ -10,6 +10,12 @@ export const useMovieStore = defineStore({
     async fetchMovies() {
       const response = await tmdbService.get('/movie/popular');
       this.movies = response.data.results;
+    },
+    async searchMovies(title) {
+      const response = await tmdbService.get('/search/movie', {
+        params: { query: title }
+      });
+      this.searchResults = response.data.results;
     }
   }
 });
